@@ -12,7 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Models\Post;
 
 Route::get('/', function () {
-    return view('posts');
+    
+
+    return view('posts',[
+        'posts' => Post::OrderBy('id')->paginate(8)
+    ]);
 });

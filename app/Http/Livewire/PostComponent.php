@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Post;
 use Livewire\WithPagination;
-
 class PostComponent extends Component
 {
     use WithPagination;
@@ -15,5 +14,10 @@ class PostComponent extends Component
         return view('livewire.post-component',[
             'posts' => Post::OrderBy('id')->paginate(8)
         ]);
+    }
+
+    public function destroy($id)
+    {
+        Post::destroy($id);
     }
 }
